@@ -27,17 +27,14 @@ SQL> create or replace trigger log_salary_update
   5  v_old_salary number;
   6  v_new_salary number;
   7  begin
-  8
-  9  v_old_salary := :OLD.salary;
- 10  v_new_salary := :NEW.salary;
- 11
- 12  IF v_old_salary <> v_new_salary THEN
- 13
- 14  INSERT INTO salary_log (empid, empname, old_salary, new_salary, update_date)
- 15  VALUES (:OLD.empid, :OLD.empname, v_old_salary, v_new_salary, SYSDATE);
- 16  END IF;
- 17  END;
- 18  /
+  8  v_old_salary := :OLD.salary;
+  9  v_new_salary := :NEW.salary;
+ 10  IF v_old_salary <> v_new_salary THEN
+ 11  INSERT INTO salary_log (empid, empname, old_salary, new_salary, update_date)
+ 12  VALUES (:OLD.empid, :OLD.empname, v_old_salary, v_new_salary, SYSDATE);
+ 13  END IF;
+ 14  END;
+ 15  /
 
 Trigger created.
 
