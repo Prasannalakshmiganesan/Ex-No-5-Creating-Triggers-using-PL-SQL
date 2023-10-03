@@ -20,6 +20,7 @@
 ![image](https://github.com/Prasannalakshmiganesan/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118610231/93267cf0-b52b-478a-a806-f2c7a8c1e3ff)
 
 ### PLSQL Trigger code
+```
 SQL> create or replace trigger log_salary_update
   2  before update on employee
   3  for each row
@@ -41,7 +42,7 @@ Trigger created.
 SQL> UPDATE employee
   2  SET salary = 70000
   3  WHERE empid = 1;
-
+```
 ### Output:
 ![image](https://github.com/Prasannalakshmiganesan/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118610231/8d31587e-86be-4bf9-9809-676bb9db6185)
 
