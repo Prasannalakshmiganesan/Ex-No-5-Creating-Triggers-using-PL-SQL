@@ -14,11 +14,39 @@
 
 ### Program:
 ### Create employee table
+![image](https://github.com/Prasannalakshmiganesan/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118610231/d6ba61a1-4f82-4276-9101-c38622bda21e)
 
 ### Create salary_log table
+![image](https://github.com/Prasannalakshmiganesan/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118610231/93267cf0-b52b-478a-a806-f2c7a8c1e3ff)
 
 ### PLSQL Trigger code
+SQL> create or replace trigger log_salary_update
+  2  before update on employee
+  3  for each row
+  4  declare
+  5  v_old_salary number;
+  6  v_new_salary number;
+  7  begin
+  8
+  9  v_old_salary := :OLD.salary;
+ 10  v_new_salary := :NEW.salary;
+ 11
+ 12  IF v_old_salary <> v_new_salary THEN
+ 13
+ 14  INSERT INTO salary_log (empid, empname, old_salary, new_salary, update_date)
+ 15  VALUES (:OLD.empid, :OLD.empname, v_old_salary, v_new_salary, SYSDATE);
+ 16  END IF;
+ 17  END;
+ 18  /
+
+Trigger created.
+
+SQL> UPDATE employee
+  2  SET salary = 70000
+  3  WHERE empid = 1;
 
 ### Output:
+![image](https://github.com/Prasannalakshmiganesan/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118610231/8d31587e-86be-4bf9-9809-676bb9db6185)
 
 ### Result:
+A trigger is successfully created and a row was updated as required.
